@@ -175,6 +175,7 @@ import '/server/authentication';
 import '/server/cors';
 import '/server/securityHeaders';
 import '/server/crossSiteRequestGuard';
+import '/server/homeAssistantIngress';
 // PASSWORD_MIN_LENGTH: an older, shorter password is changed after signing in.
 import '/server/passwordChangeRequired';
 import '/server/requireTwoFactor';

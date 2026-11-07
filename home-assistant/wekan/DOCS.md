@@ -6,12 +6,8 @@
 2. Open the three-dot menu, choose **Repositories**, add
    `https://github.com/apbarratt/wekan`, then close the dialog.
 3. Select **WeKan** from the new *WeKan Home Assistant Apps* section and install it.
-4. Before the first start, open the app's **Configuration** tab and set **Root
-   URL** to the exact address used in browsers. For example,
-   `http://homeassistant.local:8080`, `http://192.168.1.20:8080`, or the public
-   HTTPS address of a reverse proxy.
-5. In the app's **Network** tab, enable `8080/tcp` and choose the same port used
-   in Root URL. Start the app and use **Open Web UI**.
+4. Start the app. **WeKan** appears in the Home Assistant sidebar; select it to
+   open the board interface.
 
 The first account registered in a new WeKan instance is its administrator.
 
@@ -19,11 +15,13 @@ The first account registered in a new WeKan instance is its administrator.
 
 | Option | Required | Meaning |
 | --- | --- | --- |
-| **Root URL** (`root_url`) | Yes | The complete `http://` or `https://` URL that browsers use for WeKan. This must agree exactly with the hostname, scheme and port that users open. |
+| **Root URL** (`root_url`) | No | An optional, direct public `http://` or `https://` URL for WeKan. It is used in email invitation and password-reset links. |
 
-The Supervisor cannot infer this value: Home Assistant may be reached through a
-LAN address, a remote URL, or a reverse proxy. A mismatch can break login
-cookies, attachment links and live board updates.
+The sidebar uses Home Assistant ingress: its private URL is created per session
+and WeKan reads it automatically. It does not need, and must not be configured
+as, Root URL. Leave Root URL blank for sidebar-only use. If you make WeKan
+available separately through a reverse proxy, set it to that stable public URL
+so email invitation and password-reset links work outside the current session.
 
 ## Data and backups
 
@@ -32,21 +30,22 @@ state, attachments and avatars are stored under the app's private `/data`
 directory. Home Assistant includes this directory in an app backup. Create a
 Home Assistant backup before updating WeKan or changing its database settings.
 
-This app intentionally does not expose the database port.
+This app intentionally exposes no host ports, including the database port.
+Its internal web port accepts only Home Assistant's ingress proxy.
 
 ## Reverse proxy and HTTPS
 
-If a reverse proxy publishes WeKan, map the app's port only to the proxy as
-appropriate for your network, configure the proxy to forward WebSocket traffic,
-and set Root URL to the public HTTPS URL. Do not use the Home Assistant ingress
-URL as Root URL: WeKan needs a stable, directly reachable canonical URL.
+Home Assistant ingress proxies WebSocket traffic for the sidebar automatically.
+If you also create a direct reverse-proxy deployment, configure it to forward
+WebSocket traffic and set Root URL to its stable public HTTPS URL. Do not use a
+Home Assistant ingress URL as Root URL: its session token changes.
 
 ## Troubleshooting
 
-- If the app exits immediately, verify that **Root URL** begins with `http://`
-  or `https://`.
-- If **Open Web UI** cannot open WeKan, enable `8080/tcp` in the app's Network
-  tab and ensure that the selected host port matches Root URL.
+- If the sidebar item does not appear, confirm that the app is running and
+  refresh the Home Assistant browser page.
+- If the app exits immediately after setting **Root URL**, verify that it begins
+  with `http://` or `https://`.
 - Check the app log after the first start. The embedded database can take a
   little longer to initialise on slower storage.
 

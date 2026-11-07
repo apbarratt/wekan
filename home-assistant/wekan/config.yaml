@@ -10,13 +10,12 @@ startup: application
 boot: auto
 stage: experimental
 init: true
-ports:
-  8080/tcp: null
-ports_description:
-  8080/tcp: "WeKan web interface"
-webui: "http://[HOST]:[PORT:8080]"
+ingress: true
+ingress_port: 8080
+ingress_stream: true
+panel_icon: "mdi:kanban"
+panel_title: "WeKan"
+panel_admin: false
 watchdog: "http://[HOST]:[PORT:8080]/"
-options:
-  root_url: "http://homeassistant.local:8080"
 schema:
-  root_url: url
+  root_url: url?

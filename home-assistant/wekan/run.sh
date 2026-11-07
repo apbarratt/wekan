@@ -13,10 +13,11 @@ root_url=$(/build/node -e '
   process.stdout.write(typeof value === "string" ? value : "");
 ' "$options")
 
-case "$root_url" in
+case "${root_url:-}" in
+  "") root_url=http://localhost ;;
   http://*|https://*) ;;
   *)
-    echo "ERROR: Set root_url to the complete http:// or https:// address used to open WeKan." >&2
+    echo "ERROR: If set, root_url must be a complete http:// or https:// address." >&2
     exit 1
     ;;
 esac
@@ -30,5 +31,6 @@ export WEKAN_DB=ferretdb
 export PORT=8080
 export WITH_API=true
 export DDP_TRANSPORT=sockjs
+export HOME_ASSISTANT_INGRESS=true
 
 exec setpriv --reuid=wekan --regid=wekan --init-groups -- /build/wekan-entrypoint.sh

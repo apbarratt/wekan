@@ -5,9 +5,8 @@ WeKan's embedded FerretDB/SQLite database, so no separate database app is
 required. Its data, uploaded attachments and database are kept in the app's
 private data directory and included in Home Assistant backups.
 
-Before starting WeKan, expose its `8080/tcp` port in the **Network** section
-and set **Root URL** to the exact URL that people will use, for example
-`http://homeassistant.local:8080` or `https://wekan.example.com`.
+After starting, open **WeKan** from the Home Assistant sidebar. It uses Home
+Assistant ingress, so no host port needs to be exposed.
 
-See the **Documentation** tab for installation, backups and reverse-proxy
-guidance.
+See the **Documentation** tab for installation, backups and the optional public
+URL used in email links.

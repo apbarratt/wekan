@@ -20,16 +20,21 @@ const version = /^version: "(\d+\.\d+)"$/m.exec(config)?.[1];
 assert.ok(version, 'config has a numeric app version');
 assert.match(config, /^  - amd64$/m);
 assert.match(config, /^  - aarch64$/m);
-assert.match(config, /^  8080\/tcp: null$/m);
-assert.match(config, /^webui: "http:\/\/\[HOST\]:\[PORT:8080\]"$/m);
+assert.match(config, /^ingress: true$/m);
+assert.match(config, /^ingress_port: 8080$/m);
+assert.match(config, /^ingress_stream: true$/m);
+assert.match(config, /^panel_title: "WeKan"$/m);
+assert.doesNotMatch(config, /^ports:$/m);
 assert.match(config, /^watchdog: "http:\/\/\[HOST\]:\[PORT:8080\]\/"$/m);
-assert.match(config, /^  root_url: url$/m);
-assert.match(config, /^  root_url: "https?:\/\//m);
+assert.match(config, /^  root_url: url\?$/m);
 assert.match(dockerfile, new RegExp(`ARG WEKAN_VERSION=${version}`));
-for (const setting of ['ROOT_URL', 'WRITABLE_PATH=/data', 'WEKAN_DB=ferretdb', 'PORT=8080', 'WITH_API=true', 'DDP_TRANSPORT=sockjs']) {
+for (const setting of ['ROOT_URL', 'WRITABLE_PATH=/data', 'WEKAN_DB=ferretdb', 'PORT=8080', 'WITH_API=true', 'DDP_TRANSPORT=sockjs', 'HOME_ASSISTANT_INGRESS=true']) {
   assert.ok(launcher.includes(setting), `launcher configures ${setting}`);
 }
 assert.match(launcher, /setpriv --reuid=wekan --regid=wekan --init-groups/);
 assert.match(read('home-assistant/wekan/DOCS.md'), /Home Assistant backup/);
+assert.match(read('server/imports.js'), /import '\/server\/homeAssistantIngress';/);
+assert.match(read('server/homeAssistantIngress.js'), /ROOT_URL_PATH_PREFIX/);
+assert.match(read('server/homeAssistantIngress.js'), /172\.30\.32\.2/);
 
 console.log('homeAssistantApp: metadata and launcher checks passed');
