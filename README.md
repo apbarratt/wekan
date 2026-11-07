@@ -157,6 +157,18 @@ image: quay.io/wekan/wekan:latest
 
 docker-compose.yml at https://github.com/wekan/wekan/blob/main/docker-compose.yml
 
+## Home Assistant App
+
+WeKan can be installed as a Home Assistant App with its embedded FerretDB/SQLite
+database and no separate database container. Add this repository from
+**Settings > Apps > Install app > Repositories**, then install **WeKan**:
+
+[![Add the WeKan Home Assistant App repository](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Fapbarratt%2Fwekan)
+
+Before starting it, enable its `8080/tcp` port and set the app's **Root URL** to
+the exact address users will open. Full instructions, backup behaviour and
+reverse-proxy guidance are in [the Home Assistant App documentation](home-assistant/wekan/DOCS.md).
+
 ## Standards
 
 - [WeKan and Standard for Public Code](https://wekan.fi/standard-for-public-code/) assessment was made at 2023-11. At 2026 WeKan becameß full FLOSS with [FerretDB v1 Fork](https://github.com/wekan/FerretDB), also see 2026 talk WeKan 10 years at https://wekan.fi/docs for more details.

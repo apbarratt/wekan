@@ -1,0 +1,22 @@
+name: "WeKan"
+version: "13.00"
+slug: "wekan"
+description: "Open-source kanban boards with an embedded FerretDB database."
+url: "https://github.com/apbarratt/wekan/tree/main/home-assistant/wekan"
+arch:
+  - amd64
+  - aarch64
+startup: application
+boot: auto
+stage: experimental
+init: true
+ports:
+  8080/tcp: null
+ports_description:
+  8080/tcp: "WeKan web interface"
+webui: "http://[HOST]:[PORT:8080]"
+watchdog: "http://[HOST]:[PORT:8080]/"
+options:
+  root_url: "http://homeassistant.local:8080"
+schema:
+  root_url: url

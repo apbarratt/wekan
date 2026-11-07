@@ -14,6 +14,7 @@ Wekan is distributed under the [MIT License], allowing anyone to easily work wit
 # Install
 
 * https://wekan.fi/install/
+* [Home Assistant App](Platforms/FOSS/Container/HomeAssistant/README.md)
 
 # SaaS
 

@@ -6,8 +6,9 @@ search API where it has one), not from memory - except for Alpine, the openSUSE 
 Service and Fedora COPR, which were not checked.
 
 **Already there**, besides WeKan's own Docker image, snap, Sandstorm, UCS, Flatpak,
-AppImage, Helm chart and zip bundles: YunoHost (state "working", level 8), CapRover
-(one-click app), Runtipi, Kubero, Artifact Hub (the Helm chart).
+AppImage, Helm chart and zip bundles: [Home Assistant App](FOSS/Container/HomeAssistant/README.md),
+YunoHost (state "working", level 8), CapRover (one-click app), Runtipi, Kubero,
+Artifact Hub (the Helm chart).
 
 **Not there, and possible:**
 

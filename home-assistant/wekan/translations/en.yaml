@@ -1,0 +1,6 @@
+configuration:
+  root_url:
+    name: "Root URL"
+    description: "The exact http:// or https:// address that browsers use to open WeKan."
+network:
+  8080/tcp: "WeKan web interface"
