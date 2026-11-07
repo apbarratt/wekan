@@ -163,7 +163,7 @@ WeKan can be installed as a Home Assistant App with its embedded FerretDB/SQLite
 database and no separate database container. Add this repository from
 **Settings > Apps > Install app > Repositories**, then install **WeKan**:
 
-[![Add the WeKan Home Assistant App repository](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Fapbarratt%2Fwekan)
+[![Add the WeKan Home Assistant App repository](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Fwekan%2Fwekan)
 
 After starting it, open **WeKan** from the Home Assistant sidebar. The app uses
 Home Assistant ingress, so it needs no exposed host port. Full instructions,

@@ -4,7 +4,7 @@
 
 1. In Home Assistant, open **Settings > Apps > Install app**.
 2. Open the three-dot menu, choose **Repositories**, add
-   `https://github.com/apbarratt/wekan`, then close the dialog.
+   `https://github.com/wekan/wekan`, then close the dialog.
 3. Select **WeKan** from the new *WeKan Home Assistant Apps* section and install it.
 4. Start the app. **WeKan** appears in the Home Assistant sidebar; select it to
    open the board interface.

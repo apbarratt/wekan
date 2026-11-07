@@ -15,7 +15,10 @@ const dockerfile = read('home-assistant/wekan/Dockerfile');
 const launcher = read('home-assistant/wekan/run.sh');
 
 assert.match(repository, /^name: "WeKan Home Assistant Apps"$/m);
+assert.match(repository, /^url: "https:\/\/github\.com\/wekan\/wekan"$/m);
+assert.doesNotMatch(repository, /apbarratt\/wekan/);
 assert.match(config, /^slug: "wekan"$/m);
+assert.match(config, /^url: "https:\/\/github\.com\/wekan\/wekan\/tree\/main\/home-assistant\/wekan"$/m);
 const version = /^version: "(\d+\.\d+)"$/m.exec(config)?.[1];
 assert.ok(version, 'config has a numeric app version');
 assert.match(config, /^  - amd64$/m);

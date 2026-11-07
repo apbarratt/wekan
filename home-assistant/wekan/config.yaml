@@ -2,7 +2,7 @@ name: "WeKan"
 version: "13.00"
 slug: "wekan"
 description: "Open-source kanban boards with an embedded FerretDB database."
-url: "https://github.com/apbarratt/wekan/tree/main/home-assistant/wekan"
+url: "https://github.com/wekan/wekan/tree/main/home-assistant/wekan"
 arch:
   - amd64
   - aarch64
